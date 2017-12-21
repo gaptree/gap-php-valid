@@ -8,11 +8,19 @@ abstract class ValidBase
 
     public function throwException($msg, $key = '')
     {
-        throw new \Exception($msg, $key);
+        if ($key) {
+            throw new \Exception("$key: $msg");
+        }
+
+        throw new \Exception($msg);
     }
 
     public function exportException($msg, $key = '')
     {
-        return new \Exception($msg, $key);
+        if ($key) {
+            return new \Exception("$key: $msg");
+        }
+
+        return new \Exception($msg);
     }
 }
